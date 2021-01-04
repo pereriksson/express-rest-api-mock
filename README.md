@@ -1,6 +1,6 @@
 # Express REST API Mock
 
-This repo provides a convenient way to set up a local REST service for your new dev projects. After constantly setting up random REST environments as a developer it was time to create create something maintainable.
+This repo provides a convenient way to set up a local REST service for your new dev projects. After constantly setting up random REST environments as a developer it was time to create something maintainable.
 
 ## Usage
 
@@ -15,11 +15,11 @@ The purpose of this repo is to provide a fully working minimal REST service to s
 
 This repo contains the following:
 
-**Dataset**
+**Datasets**
 
 This repo contains a small dataset with the following to get you started. The dataset can easily be expanded with new data.
 
-The handling of collections is completely **automatic**. The only requirement for data is that there is a unique id value for each entity.
+The handling of collections is **completely automatic**. The only requirement for data is that there is a unique id value for each entity.
 
 * suppliers
 * customers
@@ -39,7 +39,7 @@ The following routes are provided:
 
 **Authentication**
 
-When authentication is enabled, the client must authenticate using using JWT. Send a POST request to `/login` as follows:
+When authentication is enabled, the client must authenticate using JWT. Send a POST request to `/login` as follows:
 
 ```json
 {
@@ -61,3 +61,13 @@ This instance supports some configuration, to simulate different kinds of scenar
 | AUTH_USER              | false         | If authentication should be required.      |
 | USERNAME               | username    | The valid username during authentication.    |
 | PASSWORD               | password    | The valid password during authentication.    |
+
+## Middlewares
+
+| Name                   | Purpose                                       |
+|------------------------|-----------------------------------------------|
+| collectionMiddleware   | Ensures that requested collections are valid. |
+| contentTypeMiddleware  | Sets the content type for the response.       |
+| delayResponseMiddleware| Delays the request if configured.             |
+| failRequestMiddleware  | Fails a request if `{ fail: true)` is provided in the requested entity. |
+| verifyTokenMiddleware  | Verifies that the provided token is correct, if authentication is enabled. |
