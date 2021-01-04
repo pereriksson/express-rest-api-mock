@@ -11,6 +11,7 @@ const failRequestMiddleware = require('./src/middleware/failRequestMiddleware');
 const verifyTokenMiddleware = require('./src/middleware/verifyTokenMiddleware');
 const contentTypeMiddleware = require('./src/middleware/contentTypeMiddleware');
 const collectionMiddleware = require('./src/middleware/collectionMiddleware');
+const delayResponseMiddleware = require('./src/middleware/delayResponseMiddleware');
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.use(bodyParser.json({ type: req => ACCEPTED_CONTENT_TYPES.includes(req.heade
 app.use(failRequestMiddleware);
 app.use(contentTypeMiddleware);
 app.use(collectionMiddleware);
+app.use(delayResponseMiddleware);
 
 if (AUTH_USER) {
     app.use(verifyTokenMiddleware);
