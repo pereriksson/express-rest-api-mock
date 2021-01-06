@@ -9,9 +9,9 @@ const failRequestMiddleware = (req, res, next) => {
         };
 
         res.status(400).send(JSON.stringify(msg));
+    } else {
+        next();
     }
-
-    next();
 }
 
 module.exports = failRequestMiddleware;

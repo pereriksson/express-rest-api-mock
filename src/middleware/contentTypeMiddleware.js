@@ -1,6 +1,6 @@
 
 const contentTypeMiddleware = (req, res, next) => {
-    res.setHeader('Content-Type', 'application/json');
+    res.set('Content-Type', 'application/json');
     next();
 };
 
